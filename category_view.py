@@ -364,7 +364,7 @@ def updateGraph1(start_date, end_date):
     df = sales.loc[pd.to_datetime(sales['Time']).between(pd.to_datetime(start_date), pd.to_datetime(end_date))]
     time_sales = df.pivot_table(values=['Sales', 'Revenue'], index=['Time'], aggfunc=np.sum)
     time_sales.reset_index(inplace=True)
-    fig = px.line(time_sales, 'Time', 'Sales', title = "Sales(units over time").update_layout(
+    fig = px.line(time_sales, 'Time', 'Sales', title = "Sales units over time").update_layout(
         template='plotly_dark',
         plot_bgcolor='rgba(0, 0, 0, 0)',
         paper_bgcolor='rgba(0, 0, 0, 0)')
@@ -393,7 +393,7 @@ def updateGraph1(start_date, end_date):
     Revenue = df['Revenue'].sum()
     fig3 = go.Figure(go.Indicator(mode="number+delta", value=Revenue,
                                   number={'suffix': " $", "font":{"size":20}},
-                                  title={"text": "<br><span style='font-size:5em;color:gray'>Ordered Units</span>"},
+                                  title={"text": "<br><span style='font-size:5em;color:gray'>Revenue</span>"},
                                   domain={'row': 0, 'column': 0})
                      ).update_layout(
         template='plotly_dark',
